@@ -8,8 +8,9 @@ export default function Card(props) {
   const { functions } = useGlobalContext();
   const { getFlag } = functions;
 
-  const starNumber = Math.floor(props.score / 2);
+  const starNumber = Math.ceil(props.score / 2);
   const stars = [];
+
   for (let i = 0; i < starNumber; i++) {
     stars.push(<FontAwesomeIcon icon={faStarSolid} />);
   }
@@ -22,14 +23,12 @@ export default function Card(props) {
       <div className={`card ${styles.card}`} key={props.id}>
         <img
           src={
-            props.image
-              ? `https://image.tmdb.org/t/p/w342${props.image}`
-              : "https://via.placeholder.com/342/771796"
+            props.image ? `https://image.tmdb.org/t/p/w342${props.image}` : ""
           }
-          className={`card-img-top ${styles.card_img}`}
+          className={`card-img-top ${props.image ? styles.card_img : "d-none"}`}
           alt={props.title}
         />
-        <div className={`card-body ${styles.card_body}`}>
+        <div className={`card-body ${props.image ? styles.card_body : ""}`}>
           <div className="card-info">
             <h5 className="card-title">{props.title}</h5>
             <h5

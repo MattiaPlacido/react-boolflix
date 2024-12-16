@@ -8,14 +8,17 @@
 /* CARD */
 .card_container {
   position: relative;
+  width: 100%;
+  font-size: 0.85rem;
 }
 
 .card {
   cursor: pointer;
+  border: white 2px solid;
+  border-radius: 0;
 }
 
 .card_body {
-  font-size: 0.9rem;
   display: none;
   color: white;
   background-color: black;

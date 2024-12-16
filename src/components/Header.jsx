@@ -16,7 +16,7 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-dark py-3 d-flex justify-content-between px-5">
+    <div className="bg-black py-3 d-flex justify-content-between px-5">
       <a href="" className="text-decoration-none text-danger h1">
         BoolFlix
       </a>

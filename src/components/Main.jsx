@@ -11,17 +11,19 @@ export default function Main() {
 
   return (
     <div
-      className={`bg-light text-dark ${areResultsEmpty() ? styles.main : ""}`}
+      className={`bg-dark text-white ${areResultsEmpty() ? styles.main : ""}`}
     >
       <h1 className={`mb-5 ${areResultsEmpty() ? "" : "d-none"}`}>
         Nessun risultato trovato
       </h1>
-      <h2 className="my-3 p-5">{areResultsEmpty() ? "" : "Film trovati : "}</h2>
+      <h2 className="mb-3 p-5 text-center">
+        {areResultsEmpty() ? "" : "Film Presenti"}
+      </h2>
       <div className={`container ${areResultsEmpty() ? "d-none" : ""}`}>
         <ResultSection results={currentMovies} />
       </div>
-      <h2 className="my-3 p-5">
-        {areResultsEmpty() ? "" : "Serie TV trovate : "}
+      <h2 className="my-3 p-5 text-center">
+        {areResultsEmpty() ? "" : "Serie TV Presenti"}
       </h2>
       <div className={`container ${areResultsEmpty() ? "d-none" : ""}`}>
         <ResultSection results={currentSeries} />
