@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function Header() {
-  const [queryTerm, setQueryTerm] = useState("");
+  const { queryData, getFilms } = useGlobalContext();
+  const { queryTerm, setQueryTerm } = queryData;
 
   const handleInputChange = (e) => {
     setQueryTerm(e.target.value);
   };
 
+  const handleInputSubmit = (e) => {
+    e.preventDefault();
+    getFilms();
+  };
+
   return (
     <div className="bg-dark text-danger py-3 d-flex justify-content-between px-5">
       <h1> BoolFlix </h1>
-      <form>
+      <form onSubmit={handleInputSubmit}>
         <div className="d-flex ">
           <input
             type="text"
