@@ -1,7 +1,8 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
 import styles from "./components.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
+import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 
 export default function Card(props) {
   const { functions } = useGlobalContext();
@@ -10,7 +11,10 @@ export default function Card(props) {
   const starNumber = Math.floor(props.score / 2);
   const stars = [];
   for (let i = 0; i < starNumber; i++) {
-    stars.push(<FontAwesomeIcon key={i} icon={faStar} />);
+    stars.push(<FontAwesomeIcon icon={faStarSolid} />);
+  }
+  for (let i = starNumber; i < 5; i++) {
+    stars.push(<FontAwesomeIcon icon={faStarRegular} />);
   }
 
   return (
