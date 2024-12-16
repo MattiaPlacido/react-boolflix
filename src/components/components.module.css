@@ -15,10 +15,15 @@
 
 .card_body {
   font-size: 0.9rem;
+  display: none;
+  color: white;
+  background-color: black;
 }
 
-.card_container:hover .card-body {
+.card_container:hover .card_body {
+  display: block;
 }
 
 .card_container:hover .card_img {
+  display: none;
 }

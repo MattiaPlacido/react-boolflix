@@ -1,3 +1,5 @@
+// NON avrei pushato la chiave api di themoviedb ma pensavo di aver sentito a lezione stamane che per questa volta andasse bene anche non usare i .env, se è un errore chiedo venia
+
 import { useState } from "react";
 import { createContext, useContext } from "react";
 

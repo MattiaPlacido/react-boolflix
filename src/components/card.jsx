@@ -14,8 +14,8 @@ export default function Card(props) {
   }
 
   return (
-    <div className={`card-container flex-fill d-flex ${styles.card_container}`}>
-      <div className={`card flex-fill ${styles.card}`} key={props.id}>
+    <div className={`card-container ${styles.card_container}`}>
+      <div className={`card ${styles.card}`} key={props.id}>
         <img
           src={
             props.image
@@ -28,7 +28,13 @@ export default function Card(props) {
         <div className={`card-body ${styles.card_body}`}>
           <div className="card-info">
             <h5 className="card-title">{props.title}</h5>
-            <h5 className="card-title">{props.originalTitle}</h5>
+            <h5
+              className={`card-title ${
+                props.originalTitle == props.title ? "d-none" : ""
+              }`}
+            >
+              {props.originalTitle}
+            </h5>
             <p className="card-text">{props.description}</p>
             <p className="card-text">Voto : {stars}</p>
             Lingua originale : &nbsp;
