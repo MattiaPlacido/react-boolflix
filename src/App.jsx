@@ -1,10 +1,21 @@
-import { useState } from "react";
+//CONTEXT
+import { GlobalContextProvider } from "./contexts/GlobalContext.jsx";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+//BOOTSTRAP
+import "bootstrap/dist/css/bootstrap.min.css";
 
-  return <></>;
+//COMPONENTS
+import Header from "./components/Header.jsx";
+import Main from "./components/Main.jsx";
+
+function App() {
+  return (
+    <GlobalContextProvider>
+      <Header />
+      <Main />
+    </GlobalContextProvider>
+  );
 }
 
 export default App;
