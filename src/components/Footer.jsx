@@ -1,3 +1,3 @@
 export default function Footer() {
-  return <div className="bg-dark py-5">placeholder</div>;
+  return <div className="bg-black py-5">placeholder</div>;
 }
