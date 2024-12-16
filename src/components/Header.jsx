@@ -16,8 +16,10 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-dark text-danger py-3 d-flex justify-content-between px-5">
-      <h1> BoolFlix </h1>
+    <div className="bg-dark py-3 d-flex justify-content-between px-5">
+      <a href="" className="text-decoration-none text-danger h1">
+        BoolFlix
+      </a>
       <form onSubmit={handleInputSubmit}>
         <div className="d-flex ">
           <input
@@ -27,9 +29,10 @@ export default function Header() {
             name="queryTerm"
             value={queryTerm}
             onChange={handleInputChange}
+            placeholder="Cerca..."
           />
           <button type="submit" className="btn btn-danger">
-            Cerca
+            Invia
           </button>
         </div>
       </form>
