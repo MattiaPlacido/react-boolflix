@@ -14,13 +14,11 @@
 }
 
 .card_body {
-  display: none;
+  font-size: 0.9rem;
 }
 
 .card_container:hover .card-body {
-  display: block;
 }
 
 .card_container:hover .card_img {
-  display: none;
 }

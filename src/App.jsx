@@ -2,6 +2,7 @@
 import { GlobalContextProvider } from "./contexts/GlobalContext.jsx";
 import "./App.css";
 
+
 //BOOTSTRAP
 import "bootstrap/dist/css/bootstrap.min.css";
 

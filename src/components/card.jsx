@@ -1,13 +1,21 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
 import styles from "./components.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 export default function Card(props) {
   const { functions } = useGlobalContext();
   const { getFlag } = functions;
 
+  const starNumber = Math.floor(props.score / 2);
+  const stars = [];
+  for (let i = 0; i < starNumber; i++) {
+    stars.push(<FontAwesomeIcon key={i} icon={faStar} />);
+  }
+
   return (
     <div className={`card-container flex-fill d-flex ${styles.card_container}`}>
-      <div className={`card flex-fill ${styles.card}`}>
+      <div className={`card flex-fill ${styles.card}`} key={props.id}>
         <img
           src={
             props.image
@@ -19,12 +27,10 @@ export default function Card(props) {
         />
         <div className={`card-body ${styles.card_body}`}>
           <div className="card-info">
-            <h5 className="card-title fs-4">{props.title}</h5>
-            <h5 className="card-title fs-4">{props.originalTitle}</h5>
-            <p className="card-text fs-6">{props.description}</p>
-            <p className="card-text">
-              Voto medio della comunità : <b>{props.score}</b>
-            </p>
+            <h5 className="card-title">{props.title}</h5>
+            <h5 className="card-title">{props.originalTitle}</h5>
+            <p className="card-text">{props.description}</p>
+            <p className="card-text">Voto : {stars}</p>
             Lingua originale : &nbsp;
             <img
               src={getFlag(props.originalLanguage)}

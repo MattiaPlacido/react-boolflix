@@ -1,6 +1,5 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
 
-
 export default function Header() {
   const { queryData, functions } = useGlobalContext();
   const { getFilms, getSeries } = functions;
