@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createContext, useContext } from "react";
 
 const GlobalContext = createContext();
@@ -24,7 +24,7 @@ export const GlobalContextProvider = ({ children }) => {
     fetch(url, options)
       .then((res) => res.json())
       .then((data) => {
-        setCurrentMovies(data);
+        setCurrentMovies(data.results || []);
         //DEBUGG
         console.log(currentMovies);
       })
