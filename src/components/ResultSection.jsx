@@ -6,7 +6,7 @@ export default function ResultSection(props) {
     <div className="row">
       {results.map((result) => {
         return (
-          <div className="col-3">
+          <div className="col-3 d-flex mb-5">
             <Card
               key={result.id}
               title={result.title || result.name}

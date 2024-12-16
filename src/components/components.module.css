@@ -1,3 +1,26 @@
 .main {
   overflow-y: auto;
 }
+/* CARD */
+.card_container {
+  position: relative;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card_img {
+}
+
+.card_body {
+  display: none;
+}
+
+.card_container:hover .card-body {
+  display: block;
+}
+
+.card_container:hover .card_img {
+  display: none;
+}
