@@ -28,7 +28,11 @@ export default function Card(props) {
           className={`card-img-top ${props.image ? styles.card_img : "d-none"}`}
           alt={props.title}
         />
-        <div className={`card-body ${props.image ? styles.card_body : ""}`}>
+        <div
+          className={`card-body bg-black text-white ${
+            props.image ? styles.card_body : ""
+          }`}
+        >
           <div className="card-info">
             <h5 className="card-title">{props.title}</h5>
             <h5

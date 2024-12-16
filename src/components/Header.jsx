@@ -21,7 +21,7 @@ export default function Header() {
         BoolFlix
       </a>
       <form onSubmit={handleInputSubmit}>
-        <div className="d-flex ">
+        <div className="d-flex mt-2">
           <input
             type="text"
             className="form-control"
