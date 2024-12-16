@@ -2,7 +2,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function Header() {
   const { queryData, functions } = useGlobalContext();
-  const { getFilms } = functions;
+  const { getFilms, getSeries } = functions;
   const { queryTerm, setQueryTerm } = queryData;
 
   const handleInputChange = (e) => {
@@ -12,6 +12,7 @@ export default function Header() {
   const handleInputSubmit = (e) => {
     e.preventDefault();
     getFilms();
+    getSeries();
   };
 
   return (
