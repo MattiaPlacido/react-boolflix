@@ -1,7 +1,8 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function Header() {
-  const { queryData, getFilms } = useGlobalContext();
+  const { queryData, functions } = useGlobalContext();
+  const { getFilms } = functions;
   const { queryTerm, setQueryTerm } = queryData;
 
   const handleInputChange = (e) => {

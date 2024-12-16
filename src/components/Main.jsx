@@ -1,7 +1,8 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function Main() {
-  const { currentMovies } = useGlobalContext();
+  const { currentMovies, functions } = useGlobalContext();
+  const { getFlag } = functions;
 
   return (
     <div className="bg-light text-dark p-5">
@@ -10,14 +11,20 @@ export default function Main() {
         <ul>
           {currentMovies.map((movie) => {
             return (
-              <li className="mb-3">
-                Titolo : <b>{movie.title}</b>
-                <br />
-                Titolo originale : <b>{movie.original_title}</b>
-                <br />
-                Lingua originale : <b>{movie.original_language}</b>
-                <br />
-                Voto medio dalla comunità : <b>{movie.vote_average}</b>
+              <li className="mb-3" key={movie.id}>
+                <p>
+                  Titolo : <b>{movie.title}</b>
+                  <br />
+                  Titolo originale : <b>{movie.original_title} </b>
+                  <br />
+                  Lingua originale : &nbsp;
+                  <img
+                    src={getFlag(movie.original_language)}
+                    alt={movie.original_language}
+                  />
+                  <br />
+                  Voto medio dalla comunità : <b>{movie.vote_average}</b>
+                </p>
               </li>
             );
           })}

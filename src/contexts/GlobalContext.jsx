@@ -31,8 +31,27 @@ export const GlobalContextProvider = ({ children }) => {
       .catch((err) => console.error(err));
   };
 
+  const getFlag = (language) => {
+    switch (language) {
+      case "it":
+        return "https://flagsapi.com/IT/shiny/32.png";
+      case "en":
+        return "https://flagsapi.com/US/shiny/32.png";
+      //da aggiungere altri casi, non l'ho fatto perchè realisticamente in questo programma sono questi quelli gestiti
+      default:
+        return "Lingua non trovata";
+    }
+
+    return <img src={``} />;
+  };
+
+  const functions = {
+    getFlag,
+    getFilms,
+  };
+
   return (
-    <GlobalContext.Provider value={{ queryData, currentMovies, getFilms }}>
+    <GlobalContext.Provider value={{ queryData, currentMovies, functions }}>
       {children}
     </GlobalContext.Provider>
   );
