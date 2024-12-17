@@ -100,6 +100,47 @@ export const GlobalContextProvider = ({ children }) => {
     }
   };
 
+  //Da qua sia per serie che per film prendo solo la prima pagina di risultati per una questione di comodità
+  const getContentByGenre = (id) => {
+    let url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=it&page=1&sort_by=popularity.desc&with_genres=${id}`;
+    let options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YTk0MTExM2Q3MzMwMGY2MjFiNjE0MTA4M2MwYjllYSIsIm5iZiI6MTczNDM0MTc2OS4zNzMsInN1YiI6IjY3NWZmNDg5ZGU4ZjM0ZTBiMjU4YTg5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OpD3y81sMTb92knz_gprqhORSRY13XLmPypW7t1TjkY",
+      },
+    };
+
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((data) =>
+        !data
+          ? console.log("Nessuna serie corrisponde al genere")
+          : setCurrentMovies(data.results)
+      )
+      .catch((err) => console.error(err));
+
+    url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=it&page=1&sort_by=popularity.desc&with_genres=${id}`;
+    options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YTk0MTExM2Q3MzMwMGY2MjFiNjE0MTA4M2MwYjllYSIsIm5iZiI6MTczNDM0MTc2OS4zNzMsInN1YiI6IjY3NWZmNDg5ZGU4ZjM0ZTBiMjU4YTg5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OpD3y81sMTb92knz_gprqhORSRY13XLmPypW7t1TjkY",
+      },
+    };
+
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((data) =>
+        !data
+          ? console.log("Nessun film corrisponde al genere")
+          : setCurrentSeries(data.results)
+      )
+      .catch((err) => console.error(err));
+  };
+
   const getFlag = (language) => {
     switch (language) {
       case "it":
@@ -123,13 +164,14 @@ export const GlobalContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getSerieGenres, getMovieGenres;
+    getSerieGenres(), getMovieGenres();
   }, []);
 
   const functions = {
     getFlag,
     getFilms,
     getSeries,
+    getContentByGenre,
     loading,
   };
 

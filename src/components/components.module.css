@@ -1,9 +1,9 @@
 .main {
   overflow-y: auto;
-  height: 77.4vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 23.7vh;
 }
 /* CARD */
 .card_container {

@@ -22,16 +22,20 @@ export default function Main() {
   }
 
   return (
-    <>
-      <GenreFilter genreList={movieGenres} />
-
-      <GenreFilter genreList={serieGenres} />
-      <div
-        className={`bg-dark text-white ${areResultsEmpty() ? styles.main : ""}`}
-      >
-        <h1 className={`mb-5 ${areResultsEmpty() ? "" : "d-none"}`}>
-          Nessun risultato trovato
-        </h1>
+    <div className="bg-dark text-white">
+      <div className="py-5 container">
+        <h2 className="text-center">Generi popolari tra i film</h2>
+        <div className="">
+          <GenreFilter genreList={movieGenres} />
+        </div>
+      </div>
+      <div className="py-5 container">
+        <h2 className="text-center">Generi popolari tra le serie</h2>
+        <div className="">
+          <GenreFilter genreList={serieGenres} />
+        </div>
+      </div>
+      <div className={`${areResultsEmpty() ? styles.main : ""}`}>
         <h2 className="mb-3 p-5 text-center">
           {areResultsEmpty() ? "" : "Film Presenti"}
         </h2>
@@ -45,6 +49,6 @@ export default function Main() {
           <ResultSection results={currentSeries} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
