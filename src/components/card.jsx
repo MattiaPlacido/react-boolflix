@@ -25,12 +25,18 @@ export default function Card(props) {
   const mergeCastList = async () => {
     const nameList = [];
     const cast = await getCastById(id, type);
-    for (let i = 0; i < 5; i++) {
-      nameList.push(cast[i].name);
-    }
 
-    setActorList(nameList.join(", "));
+    if (cast.length > 0) {
+      for (let i = 0; i < 5; i++) {
+        nameList.push(cast[i].name);
+      }
+
+      setActorList(nameList.join(", ") + " , ...");
+    } else {
+      setActorList(" non disponibile");
+    }
   };
+
   useEffect(() => {
     if (id && type) mergeCastList();
   }, []);
@@ -60,7 +66,7 @@ export default function Card(props) {
               {props.originalTitle}
             </h5>
             <p className="card-text">{props.description}</p>
-            <p className="card-text">{actorList}</p>
+            <p className="card-text"> Cast : {actorList}</p>
             <p className="card-text">Voto : {stars}</p>
             Lingua originale : &nbsp;
             <img

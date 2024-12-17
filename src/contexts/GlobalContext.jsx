@@ -166,7 +166,6 @@ export const GlobalContextProvider = ({ children }) => {
         throw new Error("Errore nella richiesta");
       }
       const data = await res.json();
-      console.log(data);
       return data.cast || [];
     } catch (err) {
       console.error(err);
