@@ -16,6 +16,7 @@ export default function ResultSection(props) {
               image={result.poster_path}
               description={result.overview}
               type={type}
+              genreIds={result.genre_ids}
             />
           </div>
         );

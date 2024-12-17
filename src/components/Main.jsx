@@ -1,5 +1,4 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
-import { useEffect } from "react";
 import ResultSection from "./ResultSection";
 import styles from "./components.module.css";
 import GenreFilter from "./GenreFilter";

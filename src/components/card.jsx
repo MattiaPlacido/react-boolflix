@@ -7,10 +7,11 @@ import { useState, useEffect } from "react";
 
 export default function Card(props) {
   const { functions } = useGlobalContext();
-  const { getFlag, getCastById } = functions;
-  const { type, id } = props;
+  const { getFlag, getCastById, getGenreNameById } = functions;
+  const { type, id, genreIds } = props;
 
   const [actorList, setActorList] = useState("");
+  const [genreList, setGenreList] = useState("Non disponibile");
 
   const starNumber = Math.ceil(props.score / 2);
   const stars = [];
@@ -37,9 +38,21 @@ export default function Card(props) {
     }
   };
 
+  const mergeGenreList = () => {
+    if (genreIds.length > 0) {
+      const nameList = genreIds.map((genreId) => getGenreNameById(genreId));
+      setGenreList(nameList.join(", "));
+    } else {
+      setGenreList("Lista generi non disponibile");
+    }
+  };
+
   useEffect(() => {
-    if (id && type) mergeCastList();
-  }, []);
+    if (id) {
+      mergeCastList();
+      mergeGenreList();
+    }
+  }, [id]);
 
   return (
     <div className={`card-container ${styles.card_container}`}>
@@ -66,7 +79,12 @@ export default function Card(props) {
               {props.originalTitle}
             </h5>
             <p className="card-text">{props.description}</p>
-            <p className="card-text"> Cast : {actorList}</p>
+            <p className="card-text">
+              Generi : <b>{genreList}</b>.
+            </p>
+            <p className="card-text">
+              Cast : <b>{actorList}</b>
+            </p>
             <p className="card-text">Voto : {stars}</p>
             Lingua originale : &nbsp;
             <img

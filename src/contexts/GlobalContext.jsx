@@ -193,6 +193,16 @@ export const GlobalContextProvider = ({ children }) => {
     }
   };
 
+  const getGenreNameById = (id) => {
+    let selectedGenre;
+    selectedGenre = movieGenres.find((genre) => genre.id === id);
+    if (!selectedGenre) {
+      selectedGenre = serieGenres.find((genre) => genre.id === id);
+    }
+    console.log(selectedGenre);
+    return selectedGenre.name;
+  };
+
   useEffect(() => {
     getSerieGenres(), getMovieGenres();
   }, []);
@@ -203,6 +213,7 @@ export const GlobalContextProvider = ({ children }) => {
     getSeries,
     getContentByGenre,
     getCastById,
+    getGenreNameById,
     loading,
   };
 
