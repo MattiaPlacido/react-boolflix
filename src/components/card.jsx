@@ -18,6 +18,8 @@ export default function Card(props) {
     stars.push(<FontAwesomeIcon icon={faStarRegular} />);
   }
 
+  const genreList = props.genre_ids;
+
   return (
     <div className={`card-container ${styles.card_container}`}>
       <div className={`card ${styles.card}`} key={props.id}>

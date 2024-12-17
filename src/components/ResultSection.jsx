@@ -15,6 +15,7 @@ export default function ResultSection(props) {
               score={result.vote_average.toFixed(1)}
               image={result.poster_path}
               description={result.overview}
+              genres={result.genre_ids}
             />
           </div>
         );

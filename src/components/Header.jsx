@@ -7,6 +7,8 @@ export default function Header() {
 
   const handleInputChange = (e) => {
     setQueryTerm(e.target.value);
+    getFilms();
+    getSeries();
   };
 
   const handleInputSubmit = (e) => {
