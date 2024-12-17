@@ -1,6 +1,6 @@
 import Card from "./card";
 export default function ResultSection(props) {
-  const { results } = props;
+  const { results, type } = props;
 
   return (
     <div className="row">
@@ -15,7 +15,7 @@ export default function ResultSection(props) {
               score={result.vote_average.toFixed(1)}
               image={result.poster_path}
               description={result.overview}
-              genres={result.genre_ids}
+              type={type}
             />
           </div>
         );

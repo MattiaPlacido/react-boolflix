@@ -40,13 +40,13 @@ export default function Main() {
           {areResultsEmpty() ? "" : "Film Presenti"}
         </h2>
         <div className={`container ${areResultsEmpty() ? "d-none" : ""}`}>
-          <ResultSection results={currentMovies} />
+          <ResultSection type="f" results={currentMovies} />
         </div>
         <h2 className="my-3 p-5 text-center">
           {areResultsEmpty() ? "" : "Serie TV Presenti"}
         </h2>
         <div className={`container ${areResultsEmpty() ? "d-none" : ""}`}>
-          <ResultSection results={currentSeries} />
+          <ResultSection type="s" results={currentSeries} />
         </div>
       </div>
     </div>

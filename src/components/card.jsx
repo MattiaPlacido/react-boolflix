@@ -3,10 +3,14 @@ import styles from "./components.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 
 export default function Card(props) {
   const { functions } = useGlobalContext();
-  const { getFlag } = functions;
+  const { getFlag, getCastById } = functions;
+  const { type } = props;
+
+  const [actorList, setActorList] = useState("");
 
   const starNumber = Math.ceil(props.score / 2);
   const stars = [];
@@ -18,7 +22,17 @@ export default function Card(props) {
     stars.push(<FontAwesomeIcon icon={faStarRegular} />);
   }
 
-  const genreList = props.genre_ids;
+  const mergeCastList = (id) => {
+    const nameList = [];
+    const cast = getCastById(id, type);
+    cast.forEach((actor) => {
+      nameList.push(actor.name);
+    });
+    setActorList(nameList.join(", "));
+  };
+  useEffect(() => {
+    mergeCastList(props.id);
+  }, props.id);
 
   return (
     <div className={`card-container ${styles.card_container}`}>
@@ -45,6 +59,7 @@ export default function Card(props) {
               {props.originalTitle}
             </h5>
             <p className="card-text">{props.description}</p>
+            <p className="card-text">{actorList}</p>
             <p className="card-text">Voto : {stars}</p>
             Lingua originale : &nbsp;
             <img

@@ -141,13 +141,39 @@ export const GlobalContextProvider = ({ children }) => {
       .catch((err) => console.error(err));
   };
 
+  const getCastById = (id, type) => {
+    let url;
+    if (type === "f" || type === "F") {
+      url = `https://api.themoviedb.org/3/movie/${id}/credits?language=it`;
+    } else if (type === "s" || type === "S") {
+      url = `https://api.themoviedb.org/3/tv/${id}/credits?language=it`;
+    } else {
+      console.log("Tipo errato per getCastById");
+      return [];
+    }
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YTk0MTExM2Q3MzMwMGY2MjFiNjE0MTA4M2MwYjllYSIsIm5iZiI6MTczNDM0MTc2OS4zNzMsInN1YiI6IjY3NWZmNDg5ZGU4ZjM0ZTBiMjU4YTg5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OpD3y81sMTb92knz_gprqhORSRY13XLmPypW7t1TjkY",
+      },
+    };
+
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((data) => data.cast || [])
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   const getFlag = (language) => {
     switch (language) {
       case "it":
         return "https://flagsapi.com/IT/shiny/32.png";
       case "en":
         return "https://flagsapi.com/US/shiny/32.png";
-      //da aggiungere altri casi, non l'ho fatto perchè realisticamente in questo programma sono questi quelli gestiti
       case "ja":
         return "https://flagsapi.com/JP/shiny/32.png";
       case "ko":
@@ -172,6 +198,7 @@ export const GlobalContextProvider = ({ children }) => {
     getFilms,
     getSeries,
     getContentByGenre,
+    getCastById,
     loading,
   };
 
