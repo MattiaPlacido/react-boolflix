@@ -141,7 +141,7 @@ export const GlobalContextProvider = ({ children }) => {
       .catch((err) => console.error(err));
   };
 
-  const getCastById = (id, type) => {
+  const getCastById = async (id, type) => {
     let url;
     if (type === "f" || type === "F") {
       url = `https://api.themoviedb.org/3/movie/${id}/credits?language=it`;
@@ -160,12 +160,17 @@ export const GlobalContextProvider = ({ children }) => {
       },
     };
 
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((data) => data.cast || [])
-      .catch((err) => {
-        console.error(err);
-      });
+    try {
+      const res = await fetch(url, options);
+      if (!res.ok) {
+        throw new Error("Errore nella richiesta");
+      }
+      const data = await res.json();
+      console.log(data);
+      return data.cast || [];
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getFlag = (language) => {

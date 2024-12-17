@@ -8,7 +8,7 @@ export default function ResultSection(props) {
         return (
           <div className="col-3 d-flex mb-5">
             <Card
-              key={result.id}
+              id={result.id}
               title={result.title || result.name}
               originalTitle={result.original_title || result.original_name}
               originalLanguage={result.original_language}

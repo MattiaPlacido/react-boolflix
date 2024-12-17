@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 export default function Card(props) {
   const { functions } = useGlobalContext();
   const { getFlag, getCastById } = functions;
-  const { type } = props;
+  const { type, id } = props;
 
   const [actorList, setActorList] = useState("");
 
@@ -22,21 +22,22 @@ export default function Card(props) {
     stars.push(<FontAwesomeIcon icon={faStarRegular} />);
   }
 
-  const mergeCastList = (id) => {
+  const mergeCastList = async () => {
     const nameList = [];
-    const cast = getCastById(id, type);
-    cast.forEach((actor) => {
-      nameList.push(actor.name);
-    });
+    const cast = await getCastById(id, type);
+    for (let i = 0; i < 5; i++) {
+      nameList.push(cast[i].name);
+    }
+
     setActorList(nameList.join(", "));
   };
   useEffect(() => {
-    mergeCastList(props.id);
-  }, props.id);
+    if (id && type) mergeCastList();
+  }, []);
 
   return (
     <div className={`card-container ${styles.card_container}`}>
-      <div className={`card ${styles.card}`} key={props.id}>
+      <div className={`card ${styles.card}`} key={id}>
         <img
           src={
             props.image ? `https://image.tmdb.org/t/p/w342${props.image}` : ""
